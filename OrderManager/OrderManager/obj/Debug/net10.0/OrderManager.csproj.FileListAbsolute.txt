@@ -1,0 +1,14 @@
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\bin\Debug\net10.0\OrderManager.exe
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\bin\Debug\net10.0\OrderManager.deps.json
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\bin\Debug\net10.0\OrderManager.runtimeconfig.json
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\bin\Debug\net10.0\OrderManager.dll
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\bin\Debug\net10.0\OrderManager.pdb
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\obj\Debug\net10.0\OrderManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\obj\Debug\net10.0\OrderManager.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\obj\Debug\net10.0\OrderManager.AssemblyInfo.cs
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\obj\Debug\net10.0\OrderManager.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\obj\Debug\net10.0\OrderManager.dll
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\obj\Debug\net10.0\refint\OrderManager.dll
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\obj\Debug\net10.0\OrderManager.pdb
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\obj\Debug\net10.0\OrderManager.genruntimeconfig.cache
+C:\Users\User\Desktop\PracticaInTravelline\OrderManager\OrderManager\obj\Debug\net10.0\ref\OrderManager.dll

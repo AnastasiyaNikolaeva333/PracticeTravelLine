@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{BB18345B-A7A3-C29B-C09F-B797D393F6B0}|OrderManager\\OrderManager.csproj|solutionrelative:ordermanager\\consoleui .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB18345B-A7A3-C29B-C09F-B797D393F6B0}|OrderManager\\OrderManager.csproj|c:\\users\\user\\desktop\\practicaintravelline\\ordermanager\\ordermanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB18345B-A7A3-C29B-C09F-B797D393F6B0}|OrderManager\\OrderManager.csproj|solutionrelative:ordermanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BB18345B-A7A3-C29B-C09F-B797D393F6B0}|OrderManager\\OrderManager.csproj|c:\\users\\user\\desktop\\practicaintravelline\\ordermanager\\ordermanager\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB18345B-A7A3-C29B-C09F-B797D393F6B0}|OrderManager\\OrderManager.csproj|solutionrelative:ordermanager\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB18345B-A7A3-C29B-C09F-B797D393F6B0}|OrderManager\\OrderManager.csproj|c:\\users\\user\\desktop\\practicaintravelline\\ordermanager\\ordermanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB18345B-A7A3-C29B-C09F-B797D393F6B0}|OrderManager\\OrderManager.csproj|solutionrelative:ordermanager\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,35 +34,35 @@
               "Title": "ConsoleUI .cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\PracticaInTravelline\\OrderManager\\OrderManager\\ConsoleUI .cs",
               "RelativeDocumentMoniker": "OrderManager\\ConsoleUI .cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\PracticaInTravelline\\OrderManager\\OrderManager\\ConsoleUI .cs*",
-              "RelativeToolTip": "OrderManager\\ConsoleUI .cs*",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBYAAAAbAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\User\\Desktop\\PracticaInTravelline\\OrderManager\\OrderManager\\ConsoleUI .cs",
+              "RelativeToolTip": "OrderManager\\ConsoleUI .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-28T09:52:06.755Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\PracticaInTravelline\\OrderManager\\OrderManager\\Program.cs",
               "RelativeDocumentMoniker": "OrderManager\\Program.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\PracticaInTravelline\\OrderManager\\OrderManager\\Program.cs",
               "RelativeToolTip": "OrderManager\\Program.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAQwA8AAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-25T08:05:33.421Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\PracticaInTravelline\\OrderManager\\OrderManager\\Order.cs",
               "RelativeDocumentMoniker": "OrderManager\\Order.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\PracticaInTravelline\\OrderManager\\OrderManager\\Order.cs*",
-              "RelativeToolTip": "OrderManager\\Order.cs*",
-              "ViewState": "AgIAABoAAAAAAAAAAAA3wCMAAAAFAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\User\\Desktop\\PracticaInTravelline\\OrderManager\\OrderManager\\Order.cs",
+              "RelativeToolTip": "OrderManager\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-28T08:49:21.725Z",
               "EditorCaption": ""

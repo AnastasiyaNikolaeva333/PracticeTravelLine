@@ -51,9 +51,9 @@
             v => !string.IsNullOrWhiteSpace( value ),
             "Адресс не может быть пустым" );
     }
-    private T ValidateInput<T>( T value, Func<T, bool> checkValied, string errorMessage )
+    private T ValidateInput<T>( T value, Func<T, bool> check, string errorMessage )
     {
-        return checkValied( value ) ? value : throw new ArgumentException( errorMessage );
+        return check( value ) ? value : throw new ArgumentException( errorMessage );
     }
     public override string ToString()
     {

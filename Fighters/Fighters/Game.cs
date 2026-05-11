@@ -6,12 +6,15 @@
         bool flagEndGAme = false;
         while ( !flagEndGAme )
         {
-            Console.WriteLine( "Введите команду:\n" +
-           "- add-fighter(Добавить игрока)\n" +
-           "- play(Начать бой)\n" +
-           "- show(Вывести всех игроков)\n" +
-           "- end(Выйти)" );
-            string comand = Response.GetResponseFromUser();
+            string comand = ConsoleMenu.ReadCommand(
+                "Выберите команду:",
+                new List<(char Key, string Command, string Description)>()
+                {
+                    ( '1', "add-fighter", "Добавить игрока" ),
+                    ( '2', "play", "Начать бой" ),
+                    ( '3', "show", "Вывести всех игроков" ),
+                    ( '4', "end", "Выйти" )
+                } );
             switch ( comand )
             {
                 case "add-fighter": { allFighters.Add( Character.CreateFighter() ); break; }

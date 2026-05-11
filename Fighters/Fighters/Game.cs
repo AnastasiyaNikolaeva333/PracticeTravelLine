@@ -8,12 +8,12 @@
         {
             string comand = ConsoleMenu.ReadCommand(
                 "Выберите команду:",
-                new List<(char Key, string Command, string Description)>()
+                new List<MenuCommand>()
                 {
-                    ( '1', "add-fighter", "Добавить игрока" ),
-                    ( '2', "play", "Начать бой" ),
-                    ( '3', "show", "Вывести всех игроков" ),
-                    ( '4', "end", "Выйти" )
+                    new MenuCommand { Key = '1', Command = "add-fighter", Description = "Добавить игрока" },
+                    new MenuCommand { Key = '2', Command = "play", Description = "Начать бой" },
+                    new MenuCommand { Key = '3', Command = "show", Description = "Вывести всех игроков" },
+                    new MenuCommand { Key = '4', Command = "end", Description = "Выйти" }
                 } );
             switch ( comand )
             {

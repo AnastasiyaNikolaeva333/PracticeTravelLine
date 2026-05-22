@@ -1,0 +1,37 @@
+.tableTranslation {
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 38%;
+}
+
+.rowTable {
+    align-items: center;
+    flex-direction: row;
+    gap: 50px;
+    font-size: 22.06px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    border: 1px solid #D9D9D9;
+    border-radius: 6px;
+    border-width: 1px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.data {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 45%;
+}
+
+.arrow {
+    background-color: transparent;
+    border: none;
+}

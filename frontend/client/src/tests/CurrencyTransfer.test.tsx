@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { Header } from '../components/CurrencyTransfer/Header';
-import { TableTranslation } from '../components/CurrencyTransfer/TableTranslation';
+import { Header } from '../components/CurrencyTransfer/Header/Header';
+import { TableTranslation } from '../components/CurrencyTransfer/TableTranslation/TableTranslation';
 
 describe('MoreAboutCurrencys Component', () => {
 

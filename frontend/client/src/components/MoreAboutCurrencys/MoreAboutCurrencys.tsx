@@ -1,12 +1,20 @@
-import { ButtonMore } from './ButtonMore';
-import { InformationAboutCurrencys } from './InformationAboutCurrencys';
+import { ButtonMore } from './ButtonMore/ButtonMore';
+import { InformationAboutCurrencys } from './InformationAboutCurrencys/InformationAboutCurrencys';
 import styles from './MoreAboutCurrencys.module.scss';
 
-export const MoreAboutCurrencys = () => {
+type MoreAboutCurrencysProps = {
+    currenciesData: Array<{
+        id: number;
+        title: string;
+        description: string;
+    }>;
+}
+
+export const MoreAboutCurrencys = (props: MoreAboutCurrencysProps) => {
     return (
         <div className={styles.information}>
             <ButtonMore />
-            <InformationAboutCurrencys />
+            <InformationAboutCurrencys currencies={props.currenciesData} />
         </div>
     );
 };

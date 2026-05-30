@@ -1,24 +1,25 @@
 import styles from './TableTranslation.module.scss'
 import { CurrencyInput } from './CurrencyInput';
+import type { Currency } from '../../../models/Currency';
+
+type TableTranslationCurrency = Pick<Currency, `code` | `value`>;
 
 type TableTranslationProps = {
-    currencies: Array<{
-        id: number;
-        value: string;
-        currency: string;
-    }>;
+    from: TableTranslationCurrency;
+    to: TableTranslationCurrency;
 }
 
-export const TableTranslation = (props: TableTranslationProps) => {
+export const TableTranslation = ({ from, to }: TableTranslationProps) => {
     return (
         <div className={styles.tableTranslation}>
-            {props.currencies.map((row) => (
-                <CurrencyInput
-                    key={row.id}
-                    value={row.value}
-                    currency={row.currency}
-                />
-            ))}
+            <CurrencyInput
+                value={from.value.toString()}
+                currency={from.code}
+            />
+            <CurrencyInput
+                value={to.value.toString()}
+                currency={to.code}
+            />
         </div>
     );
 };

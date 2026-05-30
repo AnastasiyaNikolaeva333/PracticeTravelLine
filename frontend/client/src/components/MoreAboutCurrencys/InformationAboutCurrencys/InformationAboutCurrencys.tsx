@@ -1,20 +1,12 @@
 import styles from './InformationAboutCurrencys.module.scss'
+import type { InformationNeedCurrency } from '../../../models/Currency';
 import { CurrencyDescription } from './CurrencyDescription';
 
-type InformationAboutCurrencysProps = {
-    currencies: Array<{
-        id: number;
-        title: string;
-        description: string;
-    }>;
-}
-
-export const InformationAboutCurrencys = (props: InformationAboutCurrencysProps) => {
+export const InformationAboutCurrencys = ({ currenciesData }: InformationNeedCurrency) => {
     return (
         <div className={styles.infoContainer}>
-            {props.currencies.map((currency) => (
+            {currenciesData.map((currency) => (
                 <CurrencyDescription
-                    key={currency.id}
                     title={currency.title}
                     description={currency.description}
                 />

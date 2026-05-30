@@ -1,29 +1,25 @@
+import type { Currency } from '../../models/Currency';
 import styles from './CurrencyTransfer.module.scss'
 import { Header } from './Header/Header';
 import { TableTranslation } from './TableTranslation/TableTranslation';
 
+type CurrencyTransferCurrency = Pick<Currency, `name` | `code` | `value`>;
+
 type CurrencyTransferProps = {
-    infoHeader: {
-        fromText: string;
-        toText: string;
-        dateText: string;
-    };
-    infoCurrencies: Array<{
-        id: number;
-        value: string;
-        currency: string;
-    }>;
+    from: CurrencyTransferCurrency;
+    to: CurrencyTransferCurrency;
+    date: Date;
 }
 
-export const CurrencyTransfer = (props: CurrencyTransferProps) => {
+export const CurrencyTransfer = ({ from, to, date }: CurrencyTransferProps) => {
     return (
         <div className={styles.container}>
             <Header
-                fromText={props.infoHeader.fromText}
-                toText={props.infoHeader.toText}
-                dateText={props.infoHeader.dateText}
+                from={from}
+                to={to}
+                date={date}
             />
-            <TableTranslation currencies={props.infoCurrencies} />
+            <TableTranslation from={from} to={to} />
         </div>
     );
 };

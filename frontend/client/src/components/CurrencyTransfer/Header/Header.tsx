@@ -1,17 +1,24 @@
+import type { Currency } from '../../../models/Currency';
 import styles from './Header.module.scss'
 
+type HeaderCurrency = Pick<Currency, `name` | `value`>;
+
 type HeaderProps = {
-    fromText: string;
-    toText: string;
-    dateText: string;
+    from: HeaderCurrency;
+    to: HeaderCurrency;
+    date: Date;
 }
 
-export const Header = (props: HeaderProps) => {
+export const Header = ({ from, to, date }: HeaderProps) => {
     return (
         <>
-            <p className={styles.informationTranslationFrom}>{props.fromText}</p>
-            <p className={styles.informationTranslationTo}>{props.toText}</p>
-            <p className={styles.informationData}>{props.dateText}</p>
+            <p className={styles.informationTranslationFrom}>
+                {from.value} {from.name} is
+            </p>
+            <p className={styles.informationTranslationTo}>
+                {to.value} {to.name}
+            </p>
+            <p className={styles.informationData}>{date.toUTCString()}</p>
         </>
     );
 };

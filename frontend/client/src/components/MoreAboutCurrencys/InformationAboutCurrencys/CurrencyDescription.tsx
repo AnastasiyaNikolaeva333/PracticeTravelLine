@@ -1,15 +1,12 @@
+
+import type { InformationCurrency } from '../../../models/Currency';
 import styles from './CurrencyDescription.module.scss'
 
-type CurrencyDescriptionProps = {
-    title: string;
-    description: string;
-}
-
-export const CurrencyDescription = (props: CurrencyDescriptionProps) => {
+export const CurrencyDescription = ({ title, description }: InformationCurrency) => {
     return (
         <div>
-            <p className={styles.header}>{props.title}</p>
-            <span className={styles.text}>{props.description}</span>
+            <p className={styles.header}>{title}</p>
+            <span className={styles.text}>{description}</span>
         </div>
     );
 };

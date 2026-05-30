@@ -2,15 +2,25 @@ import { render, screen } from '@testing-library/react';
 import { MoreAboutCurrencys } from '../components/MoreAboutCurrencys/MoreAboutCurrencys';
 
 describe('MoreAboutCurrencys Component', () => {
+  const currenciesData = [
+    {
+      title: "Polish zloty - PLN - zł",
+      description: "This is the official currency and legal tender of Poland. It is subdivided into 100 grosz-y (gr). It is the most traded currency in Central and Eastern Europe and ranks 21st most-traded in the foreign exchange market."
+    },
+    {
+      title: "Japanese yen - JPY - ¥",
+      description: "The yen is the official currency of Japan. It is the third-most traded currency in the foreign exchange market, after the United States dollar and the euro. It is also widely used as a third reserve currency after the US dollar and the euro."
+    }
+  ];
 
   it('отображает кнопку с текстом PLN/JPY: about ↑', () => {
-    render(<MoreAboutCurrencys />);
+    render(<MoreAboutCurrencys currenciesData={currenciesData} />);
     const button = screen.getByText(/PLN\/JPY: about ↑/);
     expect(button).toBeTruthy();
   });
 
   it('отображает информацию о валютах', () => {
-    render(<MoreAboutCurrencys />);
+    render(<MoreAboutCurrencys currenciesData={currenciesData} />);
 
     const title1 = screen.getByText(/Polish zloty - PLN - zł/);
     expect(title1).toBeTruthy();
@@ -22,13 +32,13 @@ describe('MoreAboutCurrencys Component', () => {
   });
 
   it('отображает линию (разделитель)', () => {
-    const { container } = render(<MoreAboutCurrencys />);
+    const { container } = render(<MoreAboutCurrencys currenciesData={currenciesData} />);
     const line = container.querySelector('[class*="line"]');
     expect(line).toBeTruthy();
   });
 
   it('сначала идёт кнопка, потом информация о PLN, потом о JPY', () => {
-    const { container } = render(<MoreAboutCurrencys />);
+    const { container } = render(<MoreAboutCurrencys currenciesData={currenciesData} />);
     const html = container.innerHTML;
 
     const buttonIndex = html.indexOf('PLN/JPY: about');

@@ -7,13 +7,13 @@ type CurrencyInputProps = {
     currency: string;
 }
 
-export const CurrencyInput = (props: CurrencyInputProps) => {
+export const CurrencyInput = ({ value, currency }: CurrencyInputProps) => {
     return (
         <div className={styles.rowTable}>
             <div className={styles.data}>
-                <span>{props.value}</span>
+                <span>{value}</span>
                 <img src={line} alt="Линия" />
-                <span>{props.currency}</span>
+                <span>{currency}</span>
             </div>
             <button className={styles.arrow}>
                 <img src={polygon} alt="Стрелка" />

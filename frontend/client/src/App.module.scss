@@ -1,0 +1,24 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+
+    inline-size: 75%;
+    block-size: fit-content;
+    padding: 29px 28px 53px;
+
+    background-color: white;
+    border-radius: 30px;
+}
+
+.all-content {
+    display: flex;
+    flex-wrap: wrap;
+    place-content: center center;
+
+    inline-size: 100%;
+    min-block-size: 100vh;
+
+    background-color: #EBF4FB;
+}

@@ -1,0 +1,30 @@
+.row-table {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-between;
+    align-items: center;
+
+    inline-size: 100%;
+    padding: 10px 20px;
+
+    border: 1px solid #D9D9D9;
+    border-width: 1px;
+    border-radius: 6px;
+
+    font-size: 22.06px;
+    line-height: 100%;
+    letter-spacing: 0%;
+}
+
+.data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    inline-size: 45%;
+}
+
+.arrow {
+    background-color: transparent;
+    border: none;
+}

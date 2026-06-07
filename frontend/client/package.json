@@ -10,7 +10,7 @@
     "test": "vitest",
     "test:run": "vitest run",
     "lint": "run-s lint:*",
-    "lint:eslint": "eslint src --ext .ts,.tsx",
+    "lint:eslint": "eslint .",
     "lint:stylelint": "stylelint src/**/*.scss",
     "lint-fix": "run-s lint-fix:*",
     "lint-fix:eslint": "npm run lint:eslint -- --fix",

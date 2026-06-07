@@ -1,8 +1,8 @@
-import styles from './InformationAboutCurrencys.module.scss'
 import type { InformationNeedCurrency } from '../../../models/Currency';
 import { CurrencyDescription } from './CurrencyDescription';
+import styles from './InformationAboutCurrencies.module.scss'
 
-export const InformationAboutCurrencys = ({ currenciesData }: InformationNeedCurrency) => {
+export const InformationAboutCurrencies = ({ currenciesData }: InformationNeedCurrency) => {
     return (
         <div className={styles.infoContainer}>
             {currenciesData.map((currency) => (

@@ -1,6 +1,6 @@
-import styles from './TableTranslation.module.scss'
-import { CurrencyInput } from './CurrencyInput';
 import type { Currency } from '../../../models/Currency';
+import { CurrencyInput } from './CurrencyInput';
+import styles from './TableTranslation.module.scss'
 
 type TableTranslationCurrency = Pick<Currency, `code` | `value`>;
 

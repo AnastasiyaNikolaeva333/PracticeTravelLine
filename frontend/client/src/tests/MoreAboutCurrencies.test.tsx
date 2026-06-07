@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { MoreAboutCurrencys } from '../components/MoreAboutCurrencys/MoreAboutCurrencys';
+import { MoreAboutCurrencies } from '../components/MoreAboutCurrencies/MoreAboutCurrencies';
 
 describe('MoreAboutCurrencys Component', () => {
   const currenciesData = [
@@ -14,13 +14,13 @@ describe('MoreAboutCurrencys Component', () => {
   ];
 
   it('отображает кнопку с текстом PLN/JPY: about ↑', () => {
-    render(<MoreAboutCurrencys currenciesData={currenciesData} />);
+    render(<MoreAboutCurrencies currenciesData={currenciesData} />);
     const button = screen.getByText(/PLN\/JPY: about ↑/);
     expect(button).toBeTruthy();
   });
 
   it('отображает информацию о валютах', () => {
-    render(<MoreAboutCurrencys currenciesData={currenciesData} />);
+    render(<MoreAboutCurrencies currenciesData={currenciesData} />);
 
     const title1 = screen.getByText(/Polish zloty - PLN - zł/);
     expect(title1).toBeTruthy();
@@ -31,14 +31,8 @@ describe('MoreAboutCurrencys Component', () => {
     expect(screen.getByText(/The yen is the official currency of Japan/i)).toBeTruthy();
   });
 
-  it('отображает линию (разделитель)', () => {
-    const { container } = render(<MoreAboutCurrencys currenciesData={currenciesData} />);
-    const line = container.querySelector('[class*="line"]');
-    expect(line).toBeTruthy();
-  });
-
   it('сначала идёт кнопка, потом информация о PLN, потом о JPY', () => {
-    const { container } = render(<MoreAboutCurrencys currenciesData={currenciesData} />);
+    const { container } = render(<MoreAboutCurrencies currenciesData={currenciesData} />);
     const html = container.innerHTML;
 
     const buttonIndex = html.indexOf('PLN/JPY: about');

@@ -14,7 +14,7 @@ public static class ConsoleMenu
         {
             string input = Console.ReadLine();
             MenuCommand match = options.FirstOrDefault( o => o.Key.ToString() == input );
-            if ( match.Command != null )
+            if ( match != null && match.Command != null )
             {
                 return match.Command;
             }

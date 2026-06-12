@@ -1,8 +1,6 @@
-﻿public interface IFighter
+﻿public interface IFighter : ICharacter
 {
     public string Name { get; }
-    public int GetCurrentHealth();
-    public int GetMaxHealth();
     public int CalculateDamage();
     public int CalculateArmor();
     public void SetArmor( IArmor armor );
@@ -10,5 +8,4 @@
     public void TakeDamage( int damage );
     public void RestoreHealth();
     public bool IsAlive();
-    public string GetAllInformation();
 }

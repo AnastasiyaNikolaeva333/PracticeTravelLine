@@ -1,86 +1,103 @@
 ﻿public class GameManager
 {
-    public static string StartBattles( List<IFighter> allFighter )
+    public static string StartBattles( List<IFighter> allFighters )
     {
         int numRound = 1;
-        int countFighter = allFighter.Count;
-        while ( countFighter > 1 )
+        while ( allFighters.Count > 1 )
         {
             Console.WriteLine( $"{numRound} РАУНД" );
-            allFighter = DefineInitiative( allFighter );
-            for ( int i = 0; i < countFighter / 2; i++ )
-            {
-                int firstFighter = i;
-                int secondFighter = countFighter - i - 1;
-                ProcessRound( allFighter, firstFighter, secondFighter );
-                if ( !allFighter[ firstFighter ].IsAlive() )
-                {
-                    Console.WriteLine( $"{allFighter[ firstFighter ].Name} погибает" );
-                }
-                if ( !allFighter[ secondFighter ].IsAlive() )
-                {
-                    Console.WriteLine( $"{allFighter[ secondFighter ].Name} погибает" );
-                }
-            }
+            allFighters = DefineInitiative( allFighters );
+            ProcessRounds( allFighters );
             ++numRound;
-            allFighter = allFighter.Where( f => f.IsAlive() ).ToList();
-            countFighter = allFighter.Count;
+            allFighters = allFighters.Where( f => f.IsAlive() ).ToList();
         }
-        return allFighter[ 0 ].Name;
+        return allFighters[ 0 ].Name;
     }
-
-    private static List<IFighter> DefineInitiative( List<IFighter> allFighter )
+    private static void ProcessRounds( List<IFighter> allFighters )
     {
-        int countKnight = allFighter.Count;
-        int initiative = Random.Shared.Next( 1, countKnight * 10 );
-        var sortedList = new SortedList<int, int>();
-        HashSet<int> allInitiative = new HashSet<int>();
-        for ( int i = 0; i < countKnight; i++ )
+        int countFighter = allFighters.Count;
+        for ( int i = 0; i < countFighter / 2; i++ )
         {
-            while ( allInitiative.Contains( initiative ) )
+            int firstFighter = i;
+            int secondFighter = countFighter - i - 1;
+            ProcessRound( allFighters, firstFighter, secondFighter );
+            if ( !allFighters[ firstFighter ].IsAlive() )
             {
-                initiative = Random.Shared.Next( 1, countKnight * 10 );
+                Console.WriteLine( $"{allFighters[ firstFighter ].Name} погибает" );
             }
-            allInitiative.Add( initiative );
-            sortedList.Add( initiative, i );
+            if ( !allFighters[ secondFighter ].IsAlive() )
+            {
+                Console.WriteLine( $"{allFighters[ secondFighter ].Name} погибает" );
+            }
         }
-        List<IFighter> sortedKnight = new List<IFighter>();
-        foreach ( var i in sortedList )
+    }
+    private static List<IFighter> DefineInitiative( List<IFighter> allFighters )
+    {
+        SortedList<int, int> allInitiatives = GetInitiativeFighters( allFighters );
+        return GetSortedFighters( allFighters, allInitiatives );
+    }
+    private static SortedList<int, int> GetInitiativeFighters( List<IFighter> allFighters )
+    {
+        int countFighter = allFighters.Count;
+        var sortedFighters = new SortedList<int, int>();
+        HashSet<int> uniqueInitiatives = new HashSet<int>();
+        int initiative = Random.Shared.Next( 1, countFighter * 10 );
+        for ( int i = 0; i < countFighter; i++ )
         {
-            sortedKnight.Add( allFighter[ i.Value ] );
+            while ( uniqueInitiatives.Contains( initiative ) )
+            {
+                initiative = Random.Shared.Next( 1, countFighter * 10 );
+            }
+            uniqueInitiatives.Add( initiative );
+            sortedFighters.Add( initiative, i );
         }
-        return sortedKnight;
+        return sortedFighters;
+    }
+    private static List<IFighter> GetSortedFighters( List<IFighter> allFighters, SortedList<int, int> allInitiatives )
+    {
+        List<IFighter> sortedFighters = new List<IFighter>();
+        foreach ( var i in allInitiatives )
+        {
+            sortedFighters.Add( allFighters[ i.Value ] );
+        }
+        return sortedFighters;
+    }
+    private static void ProcessRound( List<IFighter> allFighters, int indexFirstFighter, int indexSecondFighter )
+    {
+        double damageRatio = 1.0 - Random.Shared.Next( -20, 50 ) / 100.0;
+        string nameFirstFighter = allFighters[ indexFirstFighter ].Name;
+        string nameSecondFighter = allFighters[ indexSecondFighter ].Name;
+
+        int maxDamageOfFirst = DetermineMaxDamage( damageRatio, allFighters, indexFirstFighter, indexSecondFighter );
+        allFighters[ indexSecondFighter ].TakeDamage( maxDamageOfFirst );
+
+        int maxDamageOfSecond = DetermineMaxDamage( damageRatio, allFighters, indexSecondFighter, indexFirstFighter );
+        allFighters[ indexFirstFighter ].TakeDamage( maxDamageOfSecond );
+
+        Console.WriteLine( $"{nameFirstFighter} наносит {maxDamageOfFirst} урона, получает {maxDamageOfSecond}" );
+        Console.WriteLine( $"{nameSecondFighter} наносит {maxDamageOfSecond} урона, получает {maxDamageOfFirst}" );
     }
 
-    private static void ProcessRound( List<IFighter> allFighter, int indexFirstKnight, int indexSecondKnight )
+    private static int DetermineMaxDamage( double damageRatio, List<IFighter> allFighters, int indexAttacker, int indexWounded )
     {
-        string nameFirstKnight = allFighter[ indexFirstKnight ].Name;
-        int damageOfFirst = allFighter[ indexFirstKnight ].CalculateDamage();
-        int armorOfFirst = allFighter[ indexFirstKnight ].CalculateArmor();
+        string nameAttacker = allFighters[ indexAttacker ].Name;
+        bool isAttackerLive = allFighters[ indexAttacker ].IsAlive();
+        int damageOfAttacker = isAttackerLive
+            ? allFighters[ indexAttacker ].CalculateDamage()
+            : 0;
+        int armorOfAttacker = allFighters[ indexAttacker ].CalculateArmor();
 
-        string nameSecondKnight = allFighter[ indexSecondKnight ].Name;
-        int armorOfSecond = allFighter[ indexSecondKnight ].CalculateArmor();
+        int criticalDamage = DetermineCriticalDamage( nameAttacker );
+        return ( int )( Math.Max( ( damageOfAttacker - armorOfAttacker ) * criticalDamage, 0 ) * damageRatio );
 
+    }
+    private static int DetermineCriticalDamage( string name, bool isLive = true )
+    {
         int criticalDamage = Random.Shared.Next( 1, 6 ) == 2 ? 2 : 1;
-        if ( criticalDamage == 2 )
+        if ( isLive && criticalDamage == 2 )
         {
-            Console.WriteLine( $"Бойцу {nameFirstKnight} выпала удача! Критический урон." );
+            Console.WriteLine( $"Бойцу {name} выпала удача! Критический урон." );
         }
-        double damageRatio = 1.0 - Random.Shared.Next( -20, 50 ) / 100.0;
-        int maxDamageOfFirst = ( int )( Math.Max( ( damageOfFirst - armorOfSecond ) * criticalDamage, 0 ) * damageRatio );
-        allFighter[ indexSecondKnight ].TakeDamage( maxDamageOfFirst );
-
-        int isSecondLive = allFighter[ indexSecondKnight ].IsAlive() ? 1 : 0;
-        int damageOfSecond = allFighter[ indexSecondKnight ].CalculateDamage() * isSecondLive;
-        criticalDamage = Random.Shared.Next( 1, 8 ) == 2 ? 2 : 1;
-        if ( criticalDamage == 2 && isSecondLive == 1 )
-        {
-            Console.WriteLine( $"Бойцу {nameSecondKnight} выпала удача! Критический урон." );
-        }
-        int maxDamageOfSecond = ( int )( Math.Max( ( damageOfSecond - armorOfFirst ) * criticalDamage, 0 ) * damageRatio );
-        allFighter[ indexFirstKnight ].TakeDamage( maxDamageOfSecond );
-
-        Console.WriteLine( $"{nameFirstKnight} наносит {maxDamageOfFirst} урона, получает {maxDamageOfSecond}" );
-        Console.WriteLine( $"{nameSecondKnight} наносит {maxDamageOfSecond} урона, получает {maxDamageOfFirst}" );
+        return criticalDamage;
     }
 }

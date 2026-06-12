@@ -1,0 +1,16 @@
+.amount-input {
+  flex-shrink: 0;
+
+  max-inline-size: 675px;
+  padding: 4px 8px;
+
+  border: 1px solid #06c;
+  border-radius: 4px;
+
+  font-size: 22.06px;
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgb(0 102 204);
+    outline: none;
+  }
+}

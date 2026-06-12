@@ -1,0 +1,12 @@
+.table-translation {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+
+  inline-size: 100%;
+  max-inline-size: fit-content;
+
+  color: #000;
+}

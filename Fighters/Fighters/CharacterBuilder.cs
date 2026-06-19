@@ -7,27 +7,27 @@
     private IArmor _armor;
     public CharacterBuilder AddName()
     {
-        _nickname = Response.GetUniqueNickname();
+        _nickname = ComponentFactory.GetUniqueNickname();
         return this;
     }
     public CharacterBuilder ChangeRace()
     {
-        _race = Response.GetRace();
+        _race = ComponentFactory.GetRace();
         return this;
     }
     public CharacterBuilder ChangeRole()
     {
-        _role = Response.GetRole();
+        _role = ComponentFactory.GetRole();
         return this;
     }
     public CharacterBuilder ChangeWeapon()
     {
-        _weapon = Response.GetWeapon();
+        _weapon = ComponentFactory.GetWeapon();
         return this;
     }
     public CharacterBuilder ChangeArmor()
     {
-        _armor = Response.GetArmor();
+        _armor = ComponentFactory.GetArmor();
         return this;
     }
     public IFighter Build()

@@ -21,7 +21,7 @@
                 case "play": { GameModes.Play( allFighters ); break; }
                 case "show": { GameModes.Show( allFighters ); break; }
                 case "end": { GameModes.EndGame( ref flagEndGame ); break; }
-                default: { Console.WriteLine( "Неизвестная команда." ); break; }
+                default: { ConsoleLogger.Print( "Неизвестная команда." ); break; }
             }
         }
     }

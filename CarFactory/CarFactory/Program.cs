@@ -24,7 +24,7 @@
                     break;
                 case '2':
                     {
-                        ICar car = Response.ChooseReadyMadeCar();
+                        ICar car = Response.ChoosePrebuiltCars();
                         Console.WriteLine(car);
                     }
                     break;

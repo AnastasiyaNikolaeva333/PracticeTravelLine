@@ -4,6 +4,7 @@
     private IColor _color;
     private IEngine _engine;
     private IGearboxe _gearboxe;
+    private ISteeringWheel _steeringWheel;
     public CarBuilder ChooseCarBodyShape()
     {
         _carBodyShape = Response.ChooseCarBodyShape();
@@ -21,12 +22,19 @@
     }
     public CarBuilder ChooseGearboxe()
     {
-        _gearboxe = Response.ChooseGearboxe();
+        _gearboxe = _engine is ElectricEngine
+           ? new Reducer()
+           : Response.ChooseGearboxe();
+        return this;
+    }
+    public CarBuilder ChooseSteeringWheel()
+    {
+        _steeringWheel = Response.ChooseSteeringWheel();
         return this;
     }
     public ICar Build()
     {
-        ICar car = new Car( _carBodyShape, _color, _engine, _gearboxe );
+        ICar car = new Car(_carBodyShape, _color, _engine, _gearboxe, _steeringWheel);
         return car;
     }
 }

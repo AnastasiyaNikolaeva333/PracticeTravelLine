@@ -6,7 +6,7 @@ describe('SwapButton Component', () => {
   const mockonSwap = vi.fn();
 
   it('отображает кнопку с текстом "Обменять"', () => {
-    render(<SwapButton onSwap={mockonSwap} testId="swap-button" />);
+    render(<SwapButton onSwap={mockonSwap} />);
 
     const button = screen.getByTestId('swap-button');
     expect(button).toBeInTheDocument();
@@ -14,7 +14,7 @@ describe('SwapButton Component', () => {
   });
 
   it('при клике на кнопку вызывается onSwap', () => {
-    render(<SwapButton onSwap={mockonSwap} testId="swap-button" />);
+    render(<SwapButton onSwap={mockonSwap} />);
 
     const button = screen.getByTestId('swap-button');
     fireEvent.click(button);

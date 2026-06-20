@@ -9,7 +9,6 @@ type CurrencyInputProps = {
   onCurrencyChange: (newCurrency: string) => void;
   onAmountChange: (amount: number) => void;
   isEditable?: boolean;
-  testId?: string;
 };
 
 export const CurrencyInput = ({
@@ -17,20 +16,19 @@ export const CurrencyInput = ({
   currency,
   onCurrencyChange,
   onAmountChange,
-  isEditable = false,
-  testId
+  isEditable = false
 }: CurrencyInputProps) => {
   return (
-    <div className={styles.rowTable} data-testid={testId}>
+    <div className={styles.rowTable} data-testid={'currency'}>
       <div className={styles.input}>
         {isEditable ? (
-          <Input value={value} onAmountChange={onAmountChange} testId={`${testId}-input`} />
+          <Input value={value} onAmountChange={onAmountChange} />
         ) : (
-          <span data-testid={`${testId}-value`}>{value}</span>
+          <span data-testid={'currency-value'}>{value}</span>
         )}
       </div>
       <img src={line} alt="Линия" />
-      <CurrencySelect selectedCurrency={currency} onSelect={onCurrencyChange} testId={`${testId}-select`} />
+      <CurrencySelect selectedCurrency={currency} onSelect={onCurrencyChange} />
     </div>
   );
 };

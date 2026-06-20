@@ -7,7 +7,7 @@ describe('CurrencySelect Component', () => {
   const selectedCurrency = 'PLN';
 
   it('отображает select с выбранной валютой и списком других вариантов', () => {
-    render(<CurrencySelect selectedCurrency={selectedCurrency} onSelect={mockOnSelect} testId="currency-select" />);
+    render(<CurrencySelect selectedCurrency={selectedCurrency} onSelect={mockOnSelect} />);
 
     const select = screen.getByTestId('currency-select');
     expect(select).toBeInTheDocument();
@@ -21,7 +21,7 @@ describe('CurrencySelect Component', () => {
   });
 
   it('вызывает onSelect с новым значением при выборе валюты', () => {
-    render(<CurrencySelect selectedCurrency={selectedCurrency} onSelect={mockOnSelect} testId="currency-select" />);
+    render(<CurrencySelect selectedCurrency={selectedCurrency} onSelect={mockOnSelect} />);
 
     const select = screen.getByTestId('currency-select');
     fireEvent.change(select, { target: { value: 'JPY' } });
@@ -31,7 +31,7 @@ describe('CurrencySelect Component', () => {
   });
 
   it('выбранная валюта отображается как selected', () => {
-    render(<CurrencySelect selectedCurrency="JPY" onSelect={mockOnSelect} testId="currency-select" />);
+    render(<CurrencySelect selectedCurrency="JPY" onSelect={mockOnSelect} />);
 
     const select = screen.getByTestId('currency-select');
 
@@ -39,12 +39,10 @@ describe('CurrencySelect Component', () => {
   });
 
   it('при изменении валюты значение в select обновляется', () => {
-    const { rerender } = render(
-      <CurrencySelect selectedCurrency="PLN" onSelect={mockOnSelect} testId="currency-select" />
-    );
+    const { rerender } = render(<CurrencySelect selectedCurrency="PLN" onSelect={mockOnSelect} />);
 
     const select = screen.getByTestId('currency-select');
-    rerender(<CurrencySelect selectedCurrency="CAD" onSelect={mockOnSelect} testId="currency-select" />);
+    rerender(<CurrencySelect selectedCurrency="CAD" onSelect={mockOnSelect} />);
 
     expect(select).toHaveValue('CAD');
   });

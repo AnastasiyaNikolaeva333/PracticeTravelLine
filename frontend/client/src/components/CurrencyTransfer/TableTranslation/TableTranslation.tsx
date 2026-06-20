@@ -30,16 +30,14 @@ export const TableTranslation = ({
         onCurrencyChange={onFromCurrencyChange}
         onAmountChange={onAmountChange}
         isEditable={true}
-        testId="from-currency"
       />
-      <SwapButton onSwap={onSwap} testId="swap-button" />
+      <SwapButton onSwap={onSwap} />
       <CurrencyInput
         value={to.value}
         currency={to.code}
         onCurrencyChange={onToCurrencyChange}
         onAmountChange={onAmountChange}
         isEditable={false}
-        testId="to-currency"
       />
     </div>
   );

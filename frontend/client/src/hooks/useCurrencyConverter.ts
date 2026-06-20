@@ -34,23 +34,23 @@ export const useCurrencyConverter = () => {
     setToCurrency(fromCurrency);
   }, [fromCurrency, toCurrency]);
 
-  const handleAmountChange = useCallback((newAmount: number) => {
+  const handleAmountChange = (newAmount: number) => {
     setAmount(newAmount);
-  }, []);
+  };
 
   const from: CurrencyAllInfo = {
     value: amount,
     code: fromCurrency.code,
-    description: currencies[0].description ?? 'Нет описания',
-    name: currencies[0].name,
-    symbol: currencies[0].symbol
+    description: fromCurrency.description ?? 'Нет описания',
+    name: fromCurrency.name,
+    symbol: fromCurrency.symbol
   };
   const to: CurrencyAllInfo = {
     value: amount,
     code: toCurrency.code,
-    description: currencies[1].description ?? 'Нет описания',
-    name: currencies[1].name,
-    symbol: currencies[1].symbol
+    description: toCurrency.description ?? 'Нет описания',
+    name: toCurrency.name,
+    symbol: toCurrency.symbol
   };
 
   return {

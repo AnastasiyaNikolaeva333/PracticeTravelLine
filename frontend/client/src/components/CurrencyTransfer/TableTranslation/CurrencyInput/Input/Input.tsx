@@ -4,10 +4,9 @@ import styles from './Input.module.scss';
 type InputProps = {
   value: number;
   onAmountChange: (amount: number) => void;
-  testId: string;
 };
 
-export const Input = ({ value, onAmountChange, testId }: InputProps) => {
+export const Input = ({ value, onAmountChange }: InputProps) => {
   const [localValue, setLocalValue] = useState(value.toString());
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,10 +23,10 @@ export const Input = ({ value, onAmountChange, testId }: InputProps) => {
     <input
       type="text"
       value={localValue}
-      size={localValue.length || 6}
+      size={localValue.length || 1}
       onChange={handleChange}
       className={styles.amountInput}
-      data-testid={`${testId}`}
+      data-testid={'from-currency-input'}
     />
   );
 };

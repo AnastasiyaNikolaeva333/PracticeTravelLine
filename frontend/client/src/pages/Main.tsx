@@ -1,7 +1,10 @@
-import { CurrencyTransfer } from '../components/CurrencyTransfer/CurrencyTransfer';
 import { MoreAboutCurrencies } from '../components/MoreAboutCurrencies/MoreAboutCurrencies';
 import styles from './Main.module.scss';
 import { useCurrencyConverter } from '../hooks/useCurrencyConverter';
+import { priceChanges } from '../mocks/currencyMocks';
+import { Header } from '../components/CurrencyTransfer/Header/Header';
+import { TableTranslation } from '../components/CurrencyTransfer/TableTranslation/TableTranslation';
+import type { CurrencyTransferCurrency } from '../models/CurrencyInfo';
 
 export const Main = () => {
   const { from, to, handleAmountChange, handleFromCurrencyChange, handleSwap, handleToCurrencyChange } =
@@ -13,14 +16,23 @@ export const Main = () => {
     description: currency.description
   }));
 
+  const rate = priceChanges[from.code]?.[to.code]?.price || 0;
+  const amount = Math.round(from.value * rate * 100) / 100;
+  const result = amount > 0 ? amount : 0;
+
+  const updateTo: CurrencyTransferCurrency = {
+    code: to.code,
+    name: to.name,
+    value: result
+  };
   const pairKey = `${currenciesData[0].code}/${currenciesData[1].code}`;
 
   return (
     <div className={styles.allContent}>
-      <CurrencyTransfer
+      <Header from={from} to={updateTo} date={new Date()} />
+      <TableTranslation
         from={from}
-        to={to}
-        date={new Date()}
+        to={updateTo}
         onFromCurrencyChange={handleFromCurrencyChange}
         onToCurrencyChange={handleToCurrencyChange}
         onAmountChange={handleAmountChange}

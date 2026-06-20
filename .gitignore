@@ -1,0 +1,76 @@
+# Universal .gitignore for Windows, macOS, Linux, VS, Rider, VS Code, Vim, Emacs, JetBrains, .NET Core, C# 
+ 
+# Operating System Files 
+# Windows 
+Thumbs.db 
+ehthumbs.db 
+Desktop.ini 
+$RECYCLE.BIN/ 
+*.cab 
+*.msi 
+*.msm 
+*.msp 
+ 
+# macOS 
+.DS_Store 
+.AppleDouble 
+.LSOverride 
+Icon 
+._* 
+.Spotlight-V100 
+.Trashes 
+ 
+# Linux 
+*.pid 
+*.socket 
+*.so 
+*.swp 
+*.swo 
+ 
+# Visual Studio 
+.vs/ 
+bin/ 
+obj/ 
+[Dd]ebug/ 
+[Rr]elease/ 
+*.user 
+*.suo 
+*.cache 
+*.pdb 
+*.exe 
+*.dll 
+ 
+# JetBrains Rider 
+.idea/ 
+*.sln.iml 
+*.DotSettings.user 
+*.DotSettings 
+*.pidb 
+*.psess 
+ 
+# Visual Studio Code 
+.vscode/ 
+*.code-workspace 
+ 
+# Vim 
+*.swp 
+*.swo 
+*~ 
+.*.un~ 
+ 
+# Emacs 
+*~ 
+\#* 
+.\#* 
+ 
+# .NET Core / C# 
+packages/ 
+*.nupkg 
+project.lock.json 
+artifacts/ 
+ 
+# Build results 
+[Bb]uild/ 
+[Ll]og/ 
+[Tt]est[Rr]esult/ 
+*-vsdoc.js 

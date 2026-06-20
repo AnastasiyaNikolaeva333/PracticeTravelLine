@@ -1,0 +1,10 @@
+.list {
+  min-inline-size: 431px;
+  padding-inline-start: inherit;
+  border: none;
+  font-size: 22.06px;
+
+  &:focus {
+    outline: none;
+  }
+}

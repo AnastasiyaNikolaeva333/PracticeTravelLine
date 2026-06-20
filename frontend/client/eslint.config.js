@@ -7,27 +7,24 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['dist', 'node_modules'],
+    ignores: ['dist', 'node_modules']
   },
   {
     files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-    ],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
     languageOptions: {
       globals: {
-        ...globals.browser,
-      },
+        ...globals.browser
+      }
     },
     plugins: {
       react,
-      'react-hooks': reactHooks,
+      'react-hooks': reactHooks
     },
     settings: {
       react: {
-        version: 'detect',
-      },
+        version: 'detect'
+      }
     },
     rules: {
       eqeqeq: ['error', 'always'],
@@ -39,18 +36,18 @@ export default tseslint.config(
       'react/function-component-definition': [
         'error',
         {
-          namedComponents: 'arrow-function',
-        },
+          namedComponents: 'arrow-function'
+        }
       ],
       '@typescript-eslint/no-unused-vars': [
         'warn',
         {
           argsIgnorePattern: '^_',
           varsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_',
-        },
-      ],
-    },
+          caughtErrorsIgnorePattern: '^_'
+        }
+      ]
+    }
   },
   eslintConfigPrettier
 );

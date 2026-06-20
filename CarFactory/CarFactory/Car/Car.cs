@@ -6,7 +6,7 @@
     private IGearbox _gearbox;
     private ISteeringWheel _steeringWheel;
 
-    public Car(ICarBodyShape carBodyShape, IColor color, IEngine engine, IGearbox gearbox, ISteeringWheel steeringWheel)
+    public Car( ICarBodyShape carBodyShape, IColor color, IEngine engine, IGearbox gearbox, ISteeringWheel steeringWheel )
     {
         _carBodyShape = carBodyShape;
         _color = color;

@@ -34,7 +34,7 @@
     }
     public ICar Build()
     {
-        ICar car = new Car(_carBodyShape, _color, _engine, _gearbox, _steeringWheel);
+        ICar car = new Car( _carBodyShape, _color, _engine, _gearbox, _steeringWheel );
         return car;
     }
 }

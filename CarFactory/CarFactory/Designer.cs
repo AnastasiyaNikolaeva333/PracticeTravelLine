@@ -9,7 +9,7 @@
             new Car(new Hatchback(), new Blue(), new ElectricEngine(), new Reducer(), new LeftSteeringWheel())
         };
     }
-    public static ICar BuildYourOwn()
+    public static ICar BuildManually()
     {
         var builder = new CarBuilder();
         return builder

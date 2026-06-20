@@ -1,4 +1,4 @@
-﻿public class Robot : IGearboxe
+﻿public class Robot : IGearbox
 {
     public string Name => "Роботизированная коробка передач";
     public double CoefficientInfluenceSpeed => 1.02;

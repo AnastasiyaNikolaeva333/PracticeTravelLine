@@ -1,4 +1,4 @@
-﻿public class Mechanics : IGearboxe
+﻿public class Mechanics : IGearbox
 {
     public string Name => "Механическая коробка передач";
     public double CoefficientInfluenceSpeed => 1.0;

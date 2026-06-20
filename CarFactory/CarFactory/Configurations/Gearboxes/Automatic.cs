@@ -1,4 +1,4 @@
-﻿public class Automatic : IGearboxe
+﻿public class Automatic : IGearbox
 {
     public string Name => "Автоматическая коробка передач";
     public int Gears => 8;

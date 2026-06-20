@@ -24,11 +24,11 @@
             engine => engine.Name);
     }
 
-    public static IGearboxe ChooseGearboxe()
+    public static IGearbox ChooseGearboxe()
     {
         return ConsoleMenu.Select(
             "Выберите коробку передач из списка ниже:",
-            Gearboxes.GetAll(),
+            Gearbox.GetAll(),
             gearbox => gearbox.Name);
     }
 

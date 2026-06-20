@@ -1,4 +1,4 @@
-﻿public class Reducer : IGearboxe
+﻿public class Reducer : IGearbox
 {
     public string Name => "Редуктор";
     public int Gears => 1;

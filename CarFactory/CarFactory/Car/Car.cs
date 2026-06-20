@@ -3,25 +3,25 @@
     private ICarBodyShape _carBodyShape;
     private IColor _color;
     private IEngine _engine;
-    private IGearboxe _gearboxe;
+    private IGearbox _gearbox;
     private ISteeringWheel _steeringWheel;
 
-    public Car(ICarBodyShape carBodyShape, IColor color, IEngine engine, IGearboxe gearboxe, ISteeringWheel steeringWheel)
+    public Car(ICarBodyShape carBodyShape, IColor color, IEngine engine, IGearbox gearbox, ISteeringWheel steeringWheel)
     {
         _carBodyShape = carBodyShape;
         _color = color;
         _engine = engine;
-        _gearboxe = gearboxe;
+        _gearbox = gearbox;
         _steeringWheel = steeringWheel;
     }
     public double GetMaxSpeed()
     {
-        double speed = _carBodyShape.MaxSpeed * _engine.CoefficientInfluenceSpeed * _gearboxe.CoefficientInfluenceSpeed;
+        double speed = _carBodyShape.MaxSpeed * _engine.CoefficientInfluenceSpeed * _gearbox.CoefficientInfluenceSpeed;
         return speed;
     }
     public int GetGearsCount()
     {
-        return _gearboxe.Gears;
+        return _gearbox.Gears;
     }
     public int GetPower()
     {
@@ -37,7 +37,7 @@
                $"Кузов: {_carBodyShape.Name}\n" +
                $"Цвет: {_color.Name}\n" +
                $"Двигатель: {_engine.Name}\n" +
-               $"Коробка передач: {_gearboxe.Name}\n" +
+               $"Коробка передач: {_gearbox.Name}\n" +
                $"Позиция руля: {_steeringWheel.Position}\n" +
                $"Максимальная скорость: {GetMaxSpeed():F2} км/ч\n" +
                $"Количество передач: {GetGearsCount()}\n" +

@@ -2,5 +2,6 @@
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
   </Folder>
+  <Project Path="Fighters.Tests/Fighters.Tests.csproj" Id="ecc463ff-0afa-4517-add6-f540ef100eb9" />
   <Project Path="Fighters/Fighters.csproj" />
 </Solution>

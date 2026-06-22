@@ -1,5 +1,6 @@
 ﻿public class Fighter : IFighter
 {
+    private readonly IDamageCalculator _damageFighter;
     public string Name { get; private set; }
     private int _initiative;
     public int Initiative
@@ -17,21 +18,21 @@
     private IWeapon _weapon = new Fists();
     public int FullDamage => _weapon.Damage + _race.Damage + _role.Damage;
     private int FullArmor => _armor.Armor + _race.Armor;
-    public Fighter( string name, IRace race, IRole role )
+    public Fighter( string name, IRace race, IRole role, IDamageCalculator damageFighter )
     {
         Name = name;
         _role = role;
         _race = race;
+        _damageFighter = damageFighter;
         _health = new Health( _race.Health, _role.Health );
     }
     public void SetArmor( IArmor armor ) => _armor = armor;
     public void SetWeapon( IWeapon weapon ) => _weapon = weapon;
     public int TakeDamage( IFighter fighter, double damageRatio )
     {
-        int damage = DamageFighter.DetermineDamage( fighter, damageRatio, FullArmor );
+        int damage = _damageFighter.DetermineDamage( fighter, damageRatio, FullArmor );
         _health.UndermineHealth( damage );
         return damage;
-
     }
     public void RestoreHealth() => _health.RestoreHealth( _race.Health, _role.Health );
     public bool IsAlive() => _health.GetCurrentHealth() > 0;

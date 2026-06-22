@@ -1,8 +1,23 @@
 ﻿public class GameModes
 {
-    public static void AddFighter( List<IFighter> allFighters )
+    private readonly IOutputProvider _output;
+    private readonly ComponentFactory _factory;
+    private readonly GameManager _gameManager;
+    private readonly DamageFighter _damageFighter;
+    public GameModes(
+        IOutputProvider output,
+        ComponentFactory factory,
+        GameManager gameManager,
+        DamageFighter damageFighter )
     {
-        var builder = new CharacterBuilder();
+        _output = output;
+        _factory = factory;
+        _gameManager = gameManager;
+        _damageFighter = damageFighter;
+    }
+    public void AddFighter( List<IFighter> allFighters )
+    {
+        var builder = new CharacterBuilder( _factory, _damageFighter );
         IFighter character = builder
             .AddName()
             .ChangeRace()
@@ -12,36 +27,36 @@
             .Build();
         allFighters.Add( character );
     }
-    public static void Show( List<IFighter> allFighters )
+    public void Show( List<IFighter> allFighters )
     {
         if ( allFighters.Count < 1 )
         {
-            ConsoleLogger.Print( "Бойцы отсутствуют" );
+            _output.Print( "Бойцы отсутствуют" );
             return;
         }
         for ( int i = 0; i < allFighters.Count; i++ )
         {
-            ConsoleLogger.Print( $"{i + 1}. {allFighters[ i ].GetAllInformation()}" );
+            _output.Print( $"{i + 1}. {allFighters[ i ].GetAllInformation()}" );
         }
     }
-    public static void Play( List<IFighter> allFighters )
+    public void Play( List<IFighter> allFighters )
     {
         if ( allFighters.Count < 2 || allFighters.Count % 2 != 0 )
         {
-            ConsoleLogger.Print( $"Игра невозможна. Персонажей должно быть больше 2 и " +
+            _output.Print( $"Игра невозможна. Персонажей должно быть больше 2 и " +
                 $"чётное количество. Сейчас их {allFighters.Count()}" );
             return;
         }
-        string nameWinner = GameManager.StartBattles( allFighters );
-        ConsoleLogger.Print( $"\n{nameWinner} ОДЕРЖАЛ ПОБЕДУ!!!\n" );
+        string nameWinner = _gameManager.StartBattles( allFighters );
+        _output.Print( $"\n{nameWinner} ОДЕРЖАЛ ПОБЕДУ!!!\n" );
         foreach ( IFighter fighter in allFighters )
         {
             fighter.RestoreHealth();
         }
     }
-    public static void EndGame( ref bool flagEndGame )
+    public void EndGame( ref bool flagEndGame )
     {
         flagEndGame = true;
-        ConsoleLogger.Print( "Игра окончена. До новой встречи!" );
+        _output.Print( "Игра окончена. До новой встречи!" );
     }
 }

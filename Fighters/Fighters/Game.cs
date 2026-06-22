@@ -1,12 +1,21 @@
 ﻿public class Game
 {
-    public static void Run()
+    private readonly ConsoleMenu _menu;
+    private readonly GameModes _gameModes;
+    private readonly IOutputProvider _output;
+    public Game( ConsoleMenu menu, GameModes gameModes, IOutputProvider output )
+    {
+        _menu = menu;
+        _gameModes = gameModes;
+        _output = output;
+    }
+    public void Run()
     {
         List<IFighter> allFighters = new List<IFighter>();
         bool flagEndGame = false;
         while ( !flagEndGame )
         {
-            string comand = ConsoleMenu.ReadCommand(
+            string comand = _menu.ReadCommand(
                 "Выберите команду:",
                 new List<MenuCommand>()
                 {
@@ -17,11 +26,11 @@
                 } );
             switch ( comand )
             {
-                case "add-fighter": { GameModes.AddFighter( allFighters ); break; }
-                case "play": { GameModes.Play( allFighters ); break; }
-                case "show": { GameModes.Show( allFighters ); break; }
-                case "end": { GameModes.EndGame( ref flagEndGame ); break; }
-                default: { ConsoleLogger.Print( "Неизвестная команда." ); break; }
+                case "add-fighter": { _gameModes.AddFighter( allFighters ); break; }
+                case "play": { _gameModes.Play( allFighters ); break; }
+                case "show": { _gameModes.Show( allFighters ); break; }
+                case "end": { _gameModes.EndGame( ref flagEndGame ); break; }
+                default: { _output.Print( "Неизвестная команда." ); break; }
             }
         }
     }

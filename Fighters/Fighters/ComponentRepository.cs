@@ -5,7 +5,6 @@
     public List<IRole> Roles { get; }
     public List<IWeapon> Weapons { get; }
     public List<IArmor> Armors { get; }
-
     private ComponentRepository()
     {
         Races = new List<IRace>

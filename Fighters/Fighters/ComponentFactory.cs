@@ -1,56 +1,70 @@
 ﻿public class ComponentFactory
 {
-    private static readonly ComponentRepository _repository = ComponentRepository.AllObjects;
-    private static HashSet<string> _allNickName = new HashSet<string>();
-    public static IRace GetRace()
+    private readonly IInputProvider _input;
+    private readonly IOutputProvider _output;
+    private readonly ComponentRepository _repository;
+    private readonly ConsoleMenu _menu;
+    private HashSet<string> _allNickName = new HashSet<string>();
+    public ComponentFactory(
+        IInputProvider input,
+        IOutputProvider output,
+        ComponentRepository repository,
+        ConsoleMenu menu )
     {
-        return ConsoleMenu.Select(
+        _input = input;
+        _output = output;
+        _repository = repository;
+        _menu = menu;
+    }
+    public IRace GetRace()
+    {
+        return _menu.Select(
            "Выберите расу из списка ниже:",
            _repository.Races,
            race => race.Name );
     }
-    public static IRole GetRole()
+    public IRole GetRole()
     {
-        return ConsoleMenu.Select(
+        return _menu.Select(
             "Выберете роль персонажу",
             _repository.Roles,
             role => role.Name );
     }
-    public static string GetUniqueNickname()
+    public string GetUniqueNickname()
     {
-        Console.WriteLine( "Введите имя(никнейм) персонажа(оно должно быть уникальным):" );
+        _output.Print( "Введите имя(никнейм) персонажа(оно должно быть уникальным):" );
         string name = GetResponseFromUser();
         while ( _allNickName.Contains( name ) )
         {
-            Console.WriteLine( "Никнейм должен быть уникальным. Введи ещё раз" );
+            _output.Print( "Никнейм должен быть уникальным. Введи ещё раз" );
             name = GetResponseFromUser();
         }
         _allNickName.Add( name );
         return name;
     }
-    public static IArmor GetArmor()
+    public IArmor GetArmor()
     {
-        return ConsoleMenu.Select(
+        return _menu.Select(
             "Вы можете выбрать броню персонажу(По умолчанию: броня отсутствует)",
             _repository.Armors,
             armor => armor.Name,
             0 );
     }
-    public static IWeapon GetWeapon()
+    public IWeapon GetWeapon()
     {
-        return ConsoleMenu.Select(
+        return _menu.Select(
             "Вы можете выбрать оружие персонажу(По умолчанию: кулаки)",
             _repository.Weapons,
             weapon => weapon.Name,
             0 );
     }
-    private static string GetResponseFromUser()
+    private string GetResponseFromUser()
     {
-        string response = Console.ReadLine();
+        string response = _input.ReadLine();
         while ( string.IsNullOrWhiteSpace( response ) )
         {
-            Console.WriteLine( "Ввод пустой. Введите ещё раз." );
-            response = Console.ReadLine();
+            _output.Print( "Ввод пустой. Введите ещё раз." );
+            response = _input.ReadLine();
         }
         return response.Trim();
     }

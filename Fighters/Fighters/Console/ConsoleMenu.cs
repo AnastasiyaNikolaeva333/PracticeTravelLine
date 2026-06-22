@@ -1,42 +1,49 @@
-public static class ConsoleMenu
+public class ConsoleMenu
 {
-    public static string ReadCommand(
+    private readonly IInputProvider _input;
+    private readonly IOutputProvider _output;
+    public ConsoleMenu( IInputProvider input, IOutputProvider output )
+    {
+        _input = input;
+        _output = output;
+    }
+    public string ReadCommand(
         string title,
         IReadOnlyList<MenuCommand> options )
     {
-        ConsoleLogger.Print( title );
+        _output.Print( title );
         foreach ( MenuCommand option in options )
         {
-            ConsoleLogger.Print( $"  {option.Key}. {option.Description}" );
+            _output.Print( $"  {option.Key}. {option.Description}" );
         }
 
         while ( true )
         {
-            string input = Console.ReadLine();
+            string input = _input.ReadLine();
             MenuCommand match = options.FirstOrDefault( o => o.Key.ToString() == input );
             if ( match != null && match.Command != null )
             {
                 return match.Command;
             }
-            ConsoleLogger.Print( "Неверный ввод. Попробуйте снова." );
+            _output.Print( "Неверный ввод. Попробуйте снова." );
         }
     }
-    public static T Select<T>(
+    public T Select<T>(
         string title,
         IReadOnlyList<T> items,
         Func<T, string> getName,
         int defaultValue = -1 )
     {
-        ConsoleLogger.Print( title );
+        _output.Print( title );
         for ( int i = 0; i < items.Count; i++ )
         {
             string marker = ( i == defaultValue ) ? " (по умолчанию)" : "";
-            ConsoleLogger.Print( $"{i + 1}. {getName( items[ i ] )}{marker}" );
+            _output.Print( $"{i + 1}. {getName( items[ i ] )}{marker}" );
         }
 
         while ( true )
         {
-            string input = Console.ReadLine();
+            string input = _input.ReadLine();
             if ( string.IsNullOrEmpty( input ) && defaultValue >= 0 )
             {
                 return items[ defaultValue ];
@@ -46,7 +53,7 @@ public static class ConsoleMenu
             {
                 return items[ choice - 1 ];
             }
-            ConsoleLogger.Print( "Неверный ввод. Попробуйте снова." );
+            _output.Print( "Неверный ввод. Попробуйте снова." );
         }
     }
 }
